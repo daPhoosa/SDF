@@ -18,7 +18,7 @@ class SDF
 		float out();
 		
 
-	//private:
+	private:
 	
 		float AccelLimit_dt;
 		float AccelLimitInv_2;
