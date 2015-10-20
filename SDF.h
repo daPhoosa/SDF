@@ -23,7 +23,7 @@ class SDF
 		float AccelLimit_dt;
 		float AccelLimitInv_2;
 		
-		float PositionNow, PositionFuture;
+		float PositionNow;
 		float VelocityNow;
 		float dt;
 

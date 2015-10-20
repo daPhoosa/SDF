@@ -27,8 +27,9 @@ SDF::SDF(float _AccelLimit, float _dt)
 float SDF::in(const float& target) // 78us on 16Mhz 
 {
 	float VelocityNext;
+	float PositionFuture;
 	
-	// Predict future stopping point if deceleration starts now
+	// Predict future stopping point if accelerating in current direction
 	if(VelocityNow > 0.0f)
 	{
 		VelocityNext   =  VelocityNow + AccelLimit_dt;
