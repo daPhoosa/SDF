@@ -29,13 +29,13 @@ float SDF::in(const float& target) // 78us on 16Mhz
 	float VelocityNext;
 	float PositionFuture;
 	
-	// Predict future stopping point if accelerating in current direction
-	if(VelocityNow > 0.0f)
+	// Predict future stopping point 
+	if(VelocityNow > 0.0f)	// ...if moving in the positive direction
 	{
 		VelocityNext   =  VelocityNow + AccelLimit_dt;
 		PositionFuture =  VelocityNext * VelocityNext * AccelLimitInv_2 + PositionNow;	// stopPosition = V^2 / (2 * A) + P
 	}
-	else
+	else					// ...if moving in the negative direction
 	{
 		VelocityNext   =  VelocityNow - AccelLimit_dt;
 		PositionFuture = -VelocityNext * VelocityNext * AccelLimitInv_2 + PositionNow;
@@ -44,7 +44,7 @@ float SDF::in(const float& target) // 78us on 16Mhz
 	// set acceleration direction based on predicted future stopping point
 	if(PositionFuture < target)
 	{
-		VelocityNow +=  AccelLimit_dt; // Integrate accel to get velocity
+		VelocityNow += AccelLimit_dt; // Integrate accel to get velocity
 	}
 	else
 	{
